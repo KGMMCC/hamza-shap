@@ -189,21 +189,6 @@ body {
   width: 100%;
 }
 
-.demo-credentials {
-  margin-top: 25px;
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 10px;
-  border: 1px dashed #ddd;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.demo-credentials p {
-  margin: 5px 0;
-}
-
 /* ড্যাশবোর্ড স্টাইল */
 .dashboard-header {
   background: white;
