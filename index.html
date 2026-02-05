@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>হামজার বিরিয়ানির দোকান - উন্নত ভার্সন</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- লগইন স্ক্রিন -->
+  <div id="loginScreen" class="screen active">
+    <div class="login-container">
+      <div class="login-header">
+        <div class="logo">
+          <i class="fas fa-utensils"></i>
+          <h1>হামজার বিরিয়ানির দোকান</h1>
+        </div>
+        <p class="tagline">বিরিয়ানি ও তেহারির সেরা ঠিকানা</p>
+      </div>
+      
+      <div class="login-form">
+        <div class="form-group">
+          <label for="loginEmail"><i class="fas fa-envelope"></i> ইমেইল</label>
+          <input type="email" id="loginEmail" placeholder="hamza@biryani.com">
+        </div>
+        
+        <div class="form-group">
+          <label for="loginPassword"><i class="fas fa-lock"></i> পাসওয়ার্ড</label>
+          <input type="password" id="loginPassword" placeholder="********">
+        </div>
+        
+        <div class="form-buttons">
+          <button id="loginBtn" class="btn btn-primary">
+            <i class="fas fa-sign-in-alt"></i> লগইন করুন
+          </button>
+          <button id="signupBtn" class="btn btn-secondary">
+            <i class="fas fa-user-plus"></i> নতুন অ্যাকাউন্ট তৈরি করুন
+          </button>
+        </div>
+        
+        <div class="demo-credentials">
+          <p><strong>ডেমো অ্যাকাউন্ট:</strong></p>
+          <p>ইমেইল: demo@hamza.com | পাসওয়ার্ড: 123456</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- মেইন ড্যাশবোর্ড স্ক্রিন -->
+  <div id="dashboardScreen" class="screen">
+    <!-- হেডার -->
+    <header class="dashboard-header">
+      <div class="header-left">
+        <div class="logo">
+          <i class="fas fa-utensils"></i>
+          <h1>হামজার বিরিয়ানির দোকান</h1>
+        </div>
+        <p id="currentDate" class="current-date"></p>
+      </div>
+      
+      <div class="header-right">
+        <div class="header-stats">
+          <div class="stat-item">
+            <i class="fas fa-money-bill-wave"></i>
+            <span id="dailySales">৳ 0</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="totalOrders">0</span>
+          </div>
+        </div>
+        <div class="user-info">
+          <i class="fas fa-user-circle"></i>
+          <span id="userEmail"></span>
+        </div>
+        <button id="logoutBtn" class="btn btn-logout">
+          <i class="fas fa-sign-out-alt"></i> লগআউট
+        </button>
+      </div>
+    </header>
+    
+    <!-- মূল কন্টেন্ট -->
+    <main class="dashboard-content">
+      <!-- কুইক অ্যাকশন বার -->
+      <div class="quick-actions">
+        <button id="newOrderBtn" class="btn btn-primary">
+          <i class="fas fa-plus"></i> নতুন অর্ডার
+        </button>
+        <button id="quickSellBtn" class="btn btn-success">
+          <i class="fas fa-bolt"></i> দ্রুত বিক্রি
+        </button>
+        <button id="addCustomItemBtn" class="btn btn-secondary">
+          <i class="fas fa-hamburger"></i> নতুন আইটেম যোগ করুন
+        </button>
+        <button id="generateReportBtn" class="btn btn-info">
+          <i class="fas fa-download"></i> রিপোর্ট ডাউনলোড
+        </button>
+      </div>
+      
+      <div class="content-columns">
+        <!-- বাম কলাম -->
+        <div class="column left-column">
+          <!-- বর্তমান অর্ডার -->
+          <section class="card">
+            <div class="card-header">
+              <h2><i class="fas fa-shopping-cart"></i> বর্তমান অর্ডার</h2>
+              <div class="card-actions">
+                <button id="clearOrderBtn" class="btn-icon" title="অর্ডার খালি করুন">
+                  <i class="fas fa-trash"></i>
+                </button>
+                <button id="saveOrderBtn" class="btn-icon" title="অর্ডার সংরক্ষণ করুন">
+                  <i class="fas fa-save"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="order-summary">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>আইটেম</th>
+                      <th>পরিমাণ</th>
+                      <th>দর</th>
+                      <th>মোট</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="currentOrderItems">
+                    <!-- অর্ডার আইটেম এখানে যোগ হবে -->
+                  </tbody>
+                </table>
+                <div class="order-total">
+                  <div class="total-row">
+                    <span>সর্বমোট:</span>
+                    <span id="orderTotalAmount">৳ 0</span>
+                  </div>
+                  <button id="checkoutBtn" class="btn btn-success btn-block">
+                    <i class="fas fa-cash-register"></i> বিক্রি সম্পন্ন করুন (৳<span id="checkoutTotal">0</span>)
+                  </button>
+                </div>
+              </div>
+              <p id="noOrderMessage" class="empty-message">কোনো অর্ডার নেই। আইটেম সিলেক্ট করে অর্ডার শুরু করুন।</p>
+            </div>
+          </section>
+          
+          <!-- দ্রুত বিক্রির জন্য আইটেম -->
+          <section class="card">
+            <div class="card-header">
+              <h2><i class="fas fa-bolt"></i> দ্রুত বিক্রির আইটেম</h2>
+              <div class="card-actions">
+                <button id="refreshItemsBtn" class="btn-icon" title="রিফ্রেশ করুন">
+                  <i class="fas fa-sync-alt"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="quick-items-grid" id="quickItemsGrid">
+                <!-- দ্রুত বিক্রির আইটেম এখানে যোগ হবে -->
+              </div>
+            </div>
+          </section>
+        </div>
+        
+        <!-- ডান কলাম -->
+        <div class="column right-column">
+          <!-- মেনু আইটেম -->
+          <section class="card">
+            <div class="card-header">
+              <h2><i class="fas fa-utensils"></i> মেনু আইটেম</h2>
+              <div class="card-actions">
+                <div class="search-box">
+                  <input type="text" id="searchMenu" placeholder="খুঁজুন...">
+                  <i class="fas fa-search"></i>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="menu-categories">
+                <button class="category-btn active" data-category="all">সব</button>
+                <button class="category-btn" data-category="বিরিয়ানি">বিরিয়ানি</button>
+                <button class="category-btn" data-category="ভাত">ভাত</button>
+                <button class="category-btn" data-category="মাংস">মাংস</button>
+                <button class="category-btn" data-category="ডিম">ডিম</button>
+                <button class="category-btn" data-category="ডাল">ডাল</button>
+                <button class="category-btn" data-category="পানীয়">পানীয়</button>
+                <button class="category-btn" data-category="অন্যান্য">অন্যান্য</button>
+              </div>
+              
+              <div class="menu-items-grid" id="menuItemsGrid">
+                <!-- মেনু আইটেম এখানে যোগ হবে -->
+              </div>
+              
+              <p id="noMenuMessage" class="empty-message">কোনো আইটেম পাওয়া যায়নি। নতুন আইটেম যোগ করুন।</p>
+            </div>
+          </section>
+          
+          <!-- পাওনা তালিকা -->
+          <section class="card">
+            <div class="card-header">
+              <h2><i class="fas fa-file-invoice-dollar"></i> পাওনা তালিকা</h2>
+              <div class="card-actions">
+                <button id="addDueBtn" class="btn-icon" title="নতুন পাওনা যোগ করুন">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="due-list" id="dueListContainer">
+                <!-- পাওনা আইটেম এখানে যোগ হবে -->
+              </div>
+              <p id="noDueMessage" class="empty-message">কোনো পাওনা নেই।</p>
+            </div>
+          </section>
+        </div>
+      </div>
+      
+      <!-- আজকের বিক্রির সারাংশ -->
+      <section class="card">
+        <div class="card-header">
+          <h2><i class="fas fa-chart-bar"></i> আজকের বিক্রির সারাংশ</h2>
+        </div>
+        <div class="card-body">
+          <div class="sales-summary">
+            <div class="summary-item">
+              <span class="summary-label">মোট বিক্রি:</span>
+              <span class="summary-value" id="todayTotalSales">৳ 0</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">মোট অর্ডার:</span>
+              <span class="summary-value" id="todayTotalOrders">0</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">সবচেয়ে জনপ্রিয়:</span>
+              <span class="summary-value" id="mostPopularItem">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">গড় বিল:</span>
+              <span class="summary-value" id="averageBill">৳ 0</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <!-- ফুটার -->
+    <footer class="dashboard-footer">
+      <p>© 2023 হামজার বিরিয়ানির দোকান | বিরিয়ানি ও তেহারির সেরা ঠিকানা</p>
+      <p>ডেভেলপড করেছেঃ সিয়াম মাহামুদ মুক্তি  | ফোন: +8801316258072 | ঠিকানা: নর্থদান এর সমসনে,প্রথম বিল্ডিং </p>
+    </footer>
+  </div>
+  
+  <!-- মডাল উইন্ডো -->
+  <div id="modalOverlay" class="modal-overlay">
+    <!-- নতুন আইটেম মডাল -->
+    <div id="addItemModal" class="modal">
+      <div class="modal-header">
+        <h3><i class="fas fa-hamburger"></i> নতুন আইটেম যোগ করুন</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="modalItemName">আইটেমের নাম</label>
+          <input type="text" id="modalItemName" placeholder="যেমন: তেহারি, ফালুদা">
+        </div>
+        
+        <div class="form-group">
+          <label for="modalItemPrice">দাম (৳)</label>
+          <input type="number" id="modalItemPrice" placeholder="টাকার পরিমাণ">
+        </div>
+        
+        <div class="form-group">
+          <label for="modalItemCategory">ক্যাটাগরি</label>
+          <select id="modalItemCategory">
+            <option value="বিরিয়ানি">বিরিয়ানি</option>
+            <option value="ভাত">ভাত</option>
+            <option value="মাংস">মাংস</option>
+            <option value="ডিম">ডিম</option>
+            <option value="ডাল">ডাল</option>
+            <option value="পানীয়">পানীয়</option>
+            <option value="অন্যান্য">অন্যান্য</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="modalItemDescription">বর্ণনা (ঐচ্ছিক)</label>
+          <textarea id="modalItemDescription" placeholder="আইটেমের সংক্ষিপ্ত বর্ণনা" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelAddItemBtn" class="btn btn-secondary">বাতিল</button>
+        <button id="saveItemBtn" class="btn btn-primary">সংরক্ষণ করুন</button>
+      </div>
+    </div>
+    
+    <!-- পাওনা যোগ মডাল -->
+    <div id="addDueModal" class="modal">
+      <div class="modal-header">
+        <h3><i class="fas fa-handshake"></i> নতুন পাওনা যোগ করুন</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="modalDueName">দোকানের নাম</label>
+          <input type="text" id="modalDueName" placeholder="যেমন: রহিমের চা দোকান">
+        </div>
+        
+        <div class="form-group">
+          <label for="modalDueItems">কি নিয়েছে</label>
+          <textarea id="modalDueItems" placeholder="যেমন: তেহারি ২ প্লেট, ডাল ১ বাটি" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="modalDueAmount">কত টাকা (৳)</label>
+          <input type="number" id="modalDueAmount" placeholder="টাকার পরিমাণ">
+        </div>
+        
+        <div class="form-group">
+          <label for="modalDueDate">তারিখ</label>
+          <input type="date" id="modalDueDate">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelDueBtn" class="btn btn-secondary">বাতিল</button>
+        <button id="saveDueBtn" class="btn btn-primary">যোগ করুন</button>
+      </div>
+    </div>
+    
+    <!-- দাম পরিবর্তন মডাল -->
+    <div id="editPriceModal" class="modal">
+      <div class="modal-header">
+        <h3><i class="fas fa-edit"></i> দাম পরিবর্তন করুন</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="editItemName">আইটেমের নাম</label>
+          <input type="text" id="editItemName" readonly>
+        </div>
+        
+        <div class="form-group">
+          <label for="editCurrentPrice">বর্তমান দাম</label>
+          <input type="text" id="editCurrentPrice" readonly>
+        </div>
+        
+        <div class="form-group">
+          <label for="editNewPrice">নতুন দাম (৳)</label>
+          <input type="number" id="editNewPrice" placeholder="নতুন দাম দিন">
+        </div>
+        
+        <div class="form-group">
+          <label for="editPriceReason">কারণ (ঐচ্ছিক)</label>
+          <input type="text" id="editPriceReason" placeholder="দাম পরিবর্তনের কারণ">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelEditPriceBtn" class="btn btn-secondary">বাতিল</button>
+        <button id="saveNewPriceBtn" class="btn btn-primary">দাম আপডেট করুন</button>
+      </div>
+    </div>
+    
+    <!-- পরিমাণ ইনপুট মডাল -->
+    <div id="quantityModal" class="modal">
+      <div class="modal-header">
+        <h3><i class="fas fa-calculator"></i> পরিমাণ নির্ধারণ করুন</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="quantity-item-info">
+          <h4 id="quantityItemName"></h4>
+          <p>বর্তমান দাম: <span id="quantityItemPrice" class="price-tag"></span></p>
+        </div>
+        
+        <div class="form-group">
+          <label for="itemQuantity">পরিমাণ</label>
+          <div class="quantity-input-group">
+            <button class="quantity-btn" id="decreaseQuantity">-</button>
+            <input type="number" id="itemQuantity" value="1" min="1" max="100">
+            <button class="quantity-btn" id="increaseQuantity">+</button>
+          </div>
+        </div>
+        
+        <div class="quantity-total">
+          <p>মোট দাম: <span id="quantityTotalPrice" class="price-tag">৳ 0</span></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelQuantityBtn" class="btn btn-secondary">বাতিল</button>
+        <button id="addToOrderBtn" class="btn btn-primary">অর্ডারে যোগ করুন</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- নোটিফিকেশন -->
+  <div id="notification" class="notification"></div>
+  
+  <!-- Firebase SDK -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
