@@ -182,8 +182,6 @@ function switchScreen(screen) {
   if (screen === 'login') {
     loginScreen.classList.add('active');
     dashboardScreen.classList.remove('active');
-    loginEmail.value = 'demo@hamza.com';
-    loginPassword.value = '123456';
   } else if (screen === 'dashboard') {
     loginScreen.classList.remove('active');
     dashboardScreen.classList.add('active');
@@ -1287,34 +1285,3 @@ cancelAddItemBtn.addEventListener('click', hideModal);
 cancelDueBtn.addEventListener('click', hideModal);
 cancelEditPriceBtn.addEventListener('click', hideModal);
 cancelQuantityBtn.addEventListener('click', hideModal);
-
-// ডেমো অ্যাকাউন্টে অটো লগইন
-window.addEventListener('load', () => {
-  // ডেমো ক্রেডেনশিয়াল অটো ফিল করুন
-  loginEmail.value = 'demo@hamza.com';
-  loginPassword.value = '123456';
-  
-  // ডেমো মেসেজ দেখান
-  const demoMsg = document.createElement('div');
-  demoMsg.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #e74c3c;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
-  `;
-  demoMsg.innerHTML = `
-    <strong>ডেমো অ্যাকাউন্ট:</strong><br>
-    লগইন করুন অথবা "নতুন অ্যাকাউন্ট তৈরি করুন" ক্লিক করুন
-  `;
-  document.body.appendChild(demoMsg);
-  
-  setTimeout(() => {
-    demoMsg.remove();
-  }, 10000);
-});
