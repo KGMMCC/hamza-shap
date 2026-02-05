@@ -1,0 +1,996 @@
+/* গ্লোবাল স্টাইল */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.screen {
+  display: none;
+  min-height: 100vh;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* লগইন স্ক্রিন */
+.login-container {
+  max-width: 450px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(231, 76, 60, 0.15);
+  animation: fadeIn 0.8s ease;
+  border: 1px solid rgba(231, 76, 60, 0.1);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.logo i {
+  font-size: 3rem;
+  color: #e74c3c;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo h1 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.tagline {
+  color: #e74c3c;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.login-form {
+  margin-top: 30px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group label i {
+  margin-right: 8px;
+  color: #e74c3c;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: 'Hind Siliguri', sans-serif;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.form-group input:focus {
+  border-color: #e74c3c;
+  background: white;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.form-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(231, 76, 60, 0.3);
+}
+
+.btn-secondary {
+  background: #f8f9fa;
+  color: #2c3e50;
+  border: 2px solid #ddd;
+}
+
+.btn-secondary:hover {
+  background: #e9ecef;
+  border-color: #c0392b;
+  color: #c0392b;
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #27ae60, #219653);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(46, 204, 113, 0.3);
+}
+
+.btn-info {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+}
+
+.btn-info:hover {
+  background: linear-gradient(135deg, #2980b9, #1f6396);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(52, 152, 219, 0.3);
+}
+
+.btn-logout {
+  background: #95a5a6;
+  color: white;
+  padding: 10px 20px;
+}
+
+.btn-logout:hover {
+  background: #7f8c8d;
+  transform: translateY(-2px);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.demo-credentials {
+  margin-top: 25px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 1px dashed #ddd;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.demo-credentials p {
+  margin: 5px 0;
+}
+
+/* ড্যাশবোর্ড স্টাইল */
+.dashboard-header {
+  background: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 3px solid #e74c3c;
+}
+
+.header-left .logo h1 {
+  font-size: 1.6rem;
+  color: #2c3e50;
+}
+
+.current-date {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.header-stats {
+  display: flex;
+  gap: 20px;
+  background: #f8f9fa;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.stat-item i {
+  color: #e74c3c;
+}
+
+.stat-item span {
+  color: #2c3e50;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #2c3e50;
+  font-weight: 500;
+  padding: 8px 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.user-info i {
+  font-size: 1.5rem;
+  color: #e74c3c;
+}
+
+.dashboard-content {
+  padding: 30px;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+/* কুইক অ্যাকশন বার */
+.quick-actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.quick-actions .btn {
+  padding: 12px 20px;
+  font-size: 0.95rem;
+}
+
+/* মূল কন্টেন্ট কলাম */
+.content-columns {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 1200px) {
+  .content-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* কার্ড স্টাইল */
+.card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #eee;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background: linear-gradient(135deg, #34495e, #2c3e50);
+  color: white;
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(15deg);
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-box input {
+  padding: 10px 15px 10px 35px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border-radius: 8px;
+  width: 200px;
+}
+
+.search-box input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+.search-box i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.7);
+}
+
+.card-body {
+  padding: 25px;
+}
+
+/* অর্ডার টেবিল */
+.order-summary {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.order-summary table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-summary th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #2c3e50;
+  border-bottom: 2px solid #e9ecef;
+  background: #f8f9fa;
+  position: sticky;
+  top: 0;
+}
+
+.order-summary td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.order-total {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #e74c3c;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* দ্রুত বিক্রির আইটেম */
+.quick-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.quick-item {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.quick-item:hover {
+  background: #e74c3c;
+  color: white;
+  transform: translateY(-5px);
+  border-color: #c0392b;
+}
+
+.quick-item:hover .item-price {
+  color: white;
+}
+
+.quick-item h4 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.item-price {
+  color: #e74c3c;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* মেনু ক্যাটাগরি */
+.menu-categories {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  padding: 8px 16px;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.category-btn.active {
+  background: #e74c3c;
+  color: white;
+  border-color: #e74c3c;
+}
+
+/* মেনু আইটেম গ্রিড */
+.menu-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.menu-item {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  border: 2px solid #eee;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-item:hover {
+  border-color: #e74c3c;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.1);
+}
+
+.menu-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.menu-item h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.item-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.item-action-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  background: #f8f9fa;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.item-action-btn:hover {
+  background: #e74c3c;
+  color: white;
+}
+
+.menu-item-price {
+  color: #e74c3c;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
+
+.menu-item-category {
+  font-size: 0.8rem;
+  color: #666;
+  background: #f8f9fa;
+  padding: 3px 8px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+/* পাওনা তালিকা */
+.due-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.due-item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.due-item:last-child {
+  border-bottom: none;
+}
+
+.due-info h4 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+.due-info p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.due-amount {
+  font-weight: 700;
+  color: #e74c3c;
+  font-size: 1.1rem;
+}
+
+.due-status {
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.due-status.unpaid {
+  background: #ffeaa7;
+  color: #e17055;
+}
+
+.due-status.paid {
+  background: #a3e4d7;
+  color: #16a085;
+}
+
+/* বিক্রির সারাংশ */
+.sales-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.summary-item {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.summary-label {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.summary-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+/* মডাল স্টাইল */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal {
+  background: white;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalSlideIn 0.3s ease;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  padding: 20px 25px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: #e74c3c;
+}
+
+.modal-body {
+  padding: 25px;
+}
+
+.modal-footer {
+  padding: 20px 25px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+/* পরিমাণ ইনপুট গ্রুপ */
+.quantity-input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-btn {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quantity-btn:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.quantity-input-group input {
+  width: 80px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.quantity-item-info {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.quantity-item-info h4 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.price-tag {
+  color: #e74c3c;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.quantity-total {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.quantity-total p {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* নোটিফিকেশন */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  z-index: 2000;
+  transform: translateX(400px);
+  transition: transform 0.5s ease;
+  max-width: 350px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notification.show {
+  transform: translateX(0);
+}
+
+.notification.success {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.notification.error {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.notification.info {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.notification.warning {
+  background: linear-gradient(135deg, #f39c12, #d35400);
+}
+
+/* খালি মেসেজ */
+.empty-message {
+  text-align: center;
+  color: #95a5a6;
+  padding: 30px;
+  font-style: italic;
+  display: none;
+}
+
+/* রেস্পন্সিভ */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .header-right {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  
+  .header-stats {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .dashboard-content {
+    padding: 15px;
+  }
+  
+  .content-columns {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .quick-actions {
+    flex-direction: column;
+  }
+  
+  .menu-items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  
+  .quick-items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+  
+  .sales-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* লোডিং স্টেট */
+.loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #e74c3c;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 100;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* অ্যানিমেশন */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* স্ক্রলবার স্টাইল */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0392b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e74c3c;
+}
+
+/* ফুটার */
+.dashboard-footer {
+  background: #2c3e50;
+  color: white;
+  padding: 20px 40px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.dashboard-footer p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.dashboard-footer p:first-child {
+  font-weight: 600;
+  color: #e74c3c;
+}
